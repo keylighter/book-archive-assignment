@@ -1,3 +1,5 @@
+
+// getting the id from html 
 const searchResult = document.getElementById('books-result');
 const searchField = document.getElementById('search-field');
 const errorMessage = document.getElementById('error-message');
@@ -10,8 +12,11 @@ const searchBook = () => {
         errorMessage.innerText = 'Please give some book names.';
         return;
     }
+    // evacuation of values 
     searchField.value = '';
     searchResult.textContent = '';
+
+    // fetching data from search text 
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
 
     fetch(url)
@@ -28,7 +33,8 @@ const displaySearchResult = books => {
 
     // result numbers
 
-    resultNumbers.innerHTML = `<h3 class="text-center">Here is ${searchResult?.length} simillar books from ${books.numFound} books. </h3>`;
+    resultNumbers.innerHTML = `<h3 class="text-center">There are  ${books.numFound} books available for you. </h3>`;
+
 
     // error handling 
     if (books.numFound === 0) {
@@ -38,14 +44,9 @@ const displaySearchResult = books => {
     else {
         errorMessage.innerText = '';
     }
-    // result numbers
-
-    resultNumbers.innerHTML = `<h3 class="text-center">There is  ${books.numFound} books available for you. </h3>`;
-
-
+    //looping the arrays of books data
     books.docs.forEach(book => {
 
-        // console.log(searchResult.length);
         const bookDiv = document.createElement('div');
         bookDiv.classList.add('col');
 
@@ -60,13 +61,15 @@ const displaySearchResult = books => {
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Author Name: ${book.author_name}</li>
             <li class="list-group-item">Publish Date: ${book.first_publish_year} </li>
-            <li class="list-group-item">Publisher: ${book.publisher} </li>
+            <li class="list-group-item">Publisher: ${book.publisher.slice(0, 5)} </li>
         </ul>
 
     </div>
         `;
-
+        // appending the bookDiv to the html tag
         searchResult.appendChild(bookDiv);
 
     })
 }
+
+//------------------ end of code------------------ //
