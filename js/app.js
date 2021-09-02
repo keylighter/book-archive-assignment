@@ -9,13 +9,16 @@ const spinner = document.getElementById("spinner");
 // searching books
 const searchBook = () => {
     const searchText = searchField.value;
+    // evacuation of values 
+    searchField.value = '';
+    searchResult.textContent = '';
     if (searchText === '') {
         errorMessage.innerText = 'Please give some book names.';
         return;
     }
-    // evacuation of values 
-    searchField.value = '';
-    searchResult.textContent = '';
+    // // evacuation of values 
+    // searchField.value = '';
+    // searchResult.textContent = '';
 
     // fetching data from search text 
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
@@ -24,6 +27,7 @@ const searchBook = () => {
         .then(res => res.json())
         .then(data => {
             spinner.classList.add("d-none");
+
             displaySearchResult(data)
         }
 
