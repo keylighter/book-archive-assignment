@@ -20,11 +20,12 @@
                 <!--  bootstrap form control-->
                 <input id="search-field" type="text" class="form-control py-2" placeholder="Search your favourite books"
                     aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary py-2" type="button" id="button-search">search</button>
+                <button onclick="searchBook()" class="btn btn-outline-secondary py-2" type="button"
+                    id="button-search">search</button>
             </div>
         </section>
-
-        <nav aria-label="Page navigation example">
+        <!-- pagination navigation  -->
+        <nav aria-label="Page navigation example" class="mt-4 mb-3">
             <ul class="pagination justify-content-center">
                 <li class="page-item ">
                     <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -37,6 +38,31 @@
                 </li>
             </ul>
         </nav>
+
+        <!-- book Display section  -->
+        <section class="container-md mt-5 ">
+            <div id="books-result" class="row row-cols-1 row-cols-md-3 mx-auto g-3">
+
+                <div class="col">
+                    <div class=" card mx-3" style="width: 18rem;">
+                        <img src="https://covers.openlibrary.org/b/id/554108-M.jpg" class="card-img-top img-fluid"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Book Name </h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Author Name</li>
+                            <li class="list-group-item">Publish Date</li>
+                            <li class="list-group-item">Publisher</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
     </main>
     <!-- js file  -->
     <script src="js/app.js"></script>
