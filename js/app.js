@@ -4,6 +4,7 @@ const searchResult = document.getElementById('books-result');
 const searchField = document.getElementById('search-field');
 const errorMessage = document.getElementById('error-message');
 const resultNumbers = document.getElementById('result-numbers');
+const spinner = document.getElementById("spinner");
 
 // searching books
 const searchBook = () => {
@@ -18,10 +19,13 @@ const searchBook = () => {
 
     // fetching data from search text 
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
-
+    spinner.classList.remove("d-none");
     fetch(url)
         .then(res => res.json())
-        .then(data => displaySearchResult(data)
+        .then(data => {
+            spinner.classList.add("d-none");
+            displaySearchResult(data)
+        }
 
 
         );
