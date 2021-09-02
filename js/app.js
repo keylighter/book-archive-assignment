@@ -14,11 +14,10 @@ const searchBook = () => {
     searchResult.textContent = '';
     if (searchText === '') {
         errorMessage.innerText = 'Please give some book names.';
+        resultNumbers.textContent = '';
         return;
     }
-    // // evacuation of values 
-    // searchField.value = '';
-    // searchResult.textContent = '';
+
 
     // fetching data from search text 
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
@@ -40,7 +39,6 @@ const searchBook = () => {
 const displaySearchResult = books => {
 
     // result numbers
-
     resultNumbers.innerHTML = `<h3 class="text-center">There are  ${books.numFound} books available for you. </h3>`;
 
 
